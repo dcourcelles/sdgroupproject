@@ -51,7 +51,7 @@ namespace TruphoxGP
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.Send(emailMessage);
 
-                lblMessage.Text = "A confirmation email has been sent to the email address provided. Please activate your account through the link in the email.";
+                lblMessage.Text = "A welcome email has been sent to the email address provided. Please login using the login page under the more tab.";
             }
 
             else
