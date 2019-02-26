@@ -1,0 +1,106 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterSupreme.Master.cs" Inherits="TruphoxGP.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Truphox</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://github.com/blueimp/jQuery-File-Upload.git"></script>
+
+    <link href="Design.css" rel="stylesheet" />
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="Home.aspx"><img src="Images/GP-Logo2.png" style="height: 37px; width: 45px;" /></a>
+                    <br />
+                    <asp:Panel runat="server" Visible="false" ID="pnlSubmit">
+                        <ul>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">SUBMIT <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="submitArt.aspx">SUBMIT ART</a></li>
+                                <li><a href="submitPhotography.aspx">SUBMIT PHOTOGRAPHY</a></li>
+                                <li><a href="submitVideo.aspx">SUBMIT VIDEOS</a></li>
+                                <li><a href="submitLit.aspx">SUBMIT LITERATURE </a></li>
+                            </ul>
+                        </li>
+                            </ul>
+                    </asp:Panel>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="Artwork.aspx">ARTWORK</a></li>
+                        <li><a href="Photography.aspx">PHOTOGRAPHY</a></li>
+                        <li><a href="Video.aspx">VIDEOS</a></li>
+                        <li><a href="Writing.aspx">LITERATURE</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="Profile.aspx">PROFILE</a></li>
+                                <li>
+                                    <asp:Panel ID="pnlNotifications" runat="server" Visible="false">&nbsp&nbsp<a href="Notifications.aspx">NOTIFICATIONS</a></asp:Panel>
+                                </li>
+                                <li><a href="PhoxForums.aspx">PHOX FORUMS</a></li>
+                                
+                                <li>
+                                    <asp:Panel ID="pnlRegister" runat="server" Visible="false">&nbsp&nbsp<a href="Register.aspx"> REGISTER</a></asp:Panel>
+                                </li>
+                                <li>
+                                    <asp:Panel ID="pnlLogin" runat="server" Visible="false">&nbsp&nbsp<a href="Login.aspx"> LOGIN</a></asp:Panel>
+                                </li>
+                                
+                                <li>
+                                    <asp:Panel ID="pnlLogout" runat="server" Visible="false">&nbsp&nbsp<asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" /></asp:Panel>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <input id="txtSearch" type="text" style="width: 170px; height: 45px" onblur="if(this.value=='')this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value='';" placeholder="Search..." /></li>
+                        <li class="ddlSearchFilerDrop">
+                            <asp:DropDownList ID="ddlUP" runat="server" style="padding:14.5px 16px; text-decoration:none; display:block;">
+                                <asp:ListItem Value="users">Users</asp:ListItem>
+                              <asp:ListItem Value="posts">Posts</asp:ListItem>
+                            </asp:DropDownList>
+                        </li>
+                        <li>
+                            <button id="btnSearch" runat="server" style="height: 45px; width: 30px" onclick="return Search()"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br />
+        <br />
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script>
+        function Search() {
+            var result = document.getElementById("txtSearch").value;
+            var filter = document.getElementById("ddlUP").value;
+
+            window.location.replace("./Results.aspx?result=" + result + "&filter=" + filter);
+            return false;
+        }
+
+
+    </script>
+</body>
+</html>
